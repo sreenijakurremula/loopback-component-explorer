@@ -130,7 +130,7 @@ function mountSwagger(loopbackApplication, swaggerApp, opts) {
   setupCors(swaggerApp, remotes);
 
   swaggerApp.get(resourcePath, function sendSwaggerObject(req, res) {
-    var tenantId = require('loopback-context').getCurrentContext().get('tenantId');
+    var tenantId = req.options.tenantId;
     var swaggerFilterPath;
     var verbs = ['head', 'get', 'post', 'put', 'patch', 'delete'];
     const blackListApi = {
